@@ -7,11 +7,13 @@ body {
 img {
     max-width: 100%;
     height: auto;
+    display: block;  /* 画像がインラインブロック要素として扱われるのを防ぐために追加 */
 }
 
 #responsive-image {
     width: 100%;
     height: auto;
+    display: block;  /* 画像が正確に拡大・縮小されるように */
 }
 
 .popup {
@@ -25,7 +27,8 @@ img {
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     z-index: 1000;
-    width: 300px;
+    width: 80%; /* レスポンシブ対応のために幅を%で設定 */
+    max-width: 300px; /* デスクトップなどの大きな画面での最大幅を設定 */
 }
 
 .popup-close {

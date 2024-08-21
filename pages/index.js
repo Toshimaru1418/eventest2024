@@ -5,6 +5,13 @@ document.addEventListener("DOMContentLoaded", function() {
         const areas = map.getElementsByTagName('area');
         const width = image.naturalWidth;
         const height = image.naturalHeight;
+
+        if (width === 0 || height === 0) {
+            // 画像がまだロードされていない場合
+            image.addEventListener('load', resizeImageMap);
+            return;
+        }
+
         const scaleWidth = image.clientWidth / width;
         const scaleHeight = image.clientHeight / height;
 
@@ -17,8 +24,9 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    resizeImageMap();
     window.addEventListener('resize', resizeImageMap);
+    window.addEventListener('load', resizeImageMap);  // 画像がロードされたときに座標を調整
+    resizeImageMap();  // 初期ロード時に座標を調整
 });
 
 // ポップアップを表示する関数
@@ -35,7 +43,7 @@ function showPopup(event, boothName) {
         case 'エスケー石鹸':
             title.textContent = 'エスケー石鹸';
             description.textContent = 'エスケー石鹸のブース説明';
-            image.src = 'sample1.jpg';
+            image.src = 'images/sample1.jpg';
             link.href = 'https://www.sksoap.co.jp/';
             link.textContent = '詳細を見る';
             break;
@@ -89,3 +97,4 @@ function showPopup(event, boothName) {
 document.getElementById('popup-close').addEventListener('click', function() {
     document.getElementById('popup').style.display = 'none'; // ポップアップを非表示にする
 });
+
