@@ -50,43 +50,43 @@ function showPopup(event, boothName) {
         case '水宗園':
             title.textContent = '水宗園';
             description.textContent = '水宗園のブース説明';
-            image.src = 'sample2.jpg';
+            image.src = 'images/sample2.jpg';
             link.href = 'https://www.suisouen.co.jp/';
             break;
         case '北海道漁連':
             title.textContent = '北海道漁連';
             description.textContent = '北海道漁連のブース説明';
-            image.src = 'sample3.jpg';
+            image.src = 'images/sample3.jpg';
             link.href = 'https://www.gyoren.or.jp/';
             break;
         case '平田産業':
             title.textContent = '平田産業';
             description.textContent = '平田産業のブース説明';
-            image.src = 'sample4.jpg';
+            image.src = 'images/sample4.jpg';
             link.href = 'https://hiratasangyo.com/';
             break;
         case 'グリンリーフ':
             title.textContent = 'グリンリーフ';
             description.textContent = 'グリンリーフのブース説明';
-            image.src = 'sample5.jpg';
+            image.src = 'images/sample5.jpg';
             link.href = 'https://www.akn.jp/';
             break;
         case '河村屋':
             title.textContent = '河村屋';
             description.textContent = '河村屋のブース説明';
-            image.src = 'sample6.jpg';
+            image.src = 'images/sample6.jpg';
             link.href = 'https://www.kawamuraya.co.jp/';
             break;
         case 'ゴミ分別ブース':
             title.textContent = 'ゴミ分別ブース';
             description.textContent = 'ゴミ分別ブースのブース説明';
-            image.src = 'sample7.jpg';
+            image.src = 'images/sample7.jpg';
             link.href = 'https://www.palsystem-gunma.coop/';
             break;
         case 'ステージ':
             title.textContent = 'ステージ';
             description.textContent = 'ステージのブース説明';
-            image.src = 'sample8.jpg';
+            image.src = 'images/sample8.jpg';
             link.href = 'https://www.palsystem-gunma2.coop/';
             break;   
     }
@@ -94,7 +94,23 @@ function showPopup(event, boothName) {
     popup.style.display = 'block'; // ポップアップを表示
 }
 
-document.getElementById('popup-close').addEventListener('click', function() {
-    document.getElementById('popup').style.display = 'none'; // ポップアップを非表示にする
-});
+// タッチイベントのサポートを追加する関数
+function addTouchSupport() {
+    const areas = document.querySelectorAll('area');
 
+    areas.forEach(area => {
+        area.addEventListener('touchstart', function(event) {
+            showPopup(event, area.getAttribute('alt'));  // 'alt' 属性からブース名を取得
+        });
+    });
+}
+
+// ポップアップを閉じる動作
+function closePopup() {
+    document.getElementById('popup').style.display = 'none';
+}
+
+document.getElementById('popup-close').addEventListener('click', closePopup);
+
+// DOMが完全に読み込まれた後にタッチサポートを追加
+document.addEventListener("DOMContentLoaded", addTouchSupport);
