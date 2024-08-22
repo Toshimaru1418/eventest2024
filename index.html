@@ -21,15 +21,21 @@
         <area alt="ゴミ分別ブース" title="ゴミ分別ブース" coords="610,530,684,607" shape="rect" onclick="showPopup(event, 'ゴミ分別ブース')">
         <area alt="ステージ" title="ステージ" coords="878,525,980,603" shape="rect" onclick="showPopup(event, 'ステージ')">
     </map>
-   <!-- ポップアップウィンドウ -->
-   <div id="popup" class="popup">
-    <span id="popup-close" class="popup-close">&times;</span>
-    <h2 id="popup-title"></h2>
-    <p id="popup-description"></p>
-    <img id="popup-image" src="images/sample1.jpg" alt="ブースの商品画像">
-    <a id="popup-link" href="https://www.sksoap.co.jp/" target="_blank">詳細を見る</a>
-</div>
 
-<script src="pages/index.js"></script>
+    <!-- 画像の下にリンクを追加 -->
+    <div style="text-align: center; margin-top: 20px;">
+        <a href="https://www.palsystem-gunma.coop/posts/?id=240819&token=b0754e96ebc249a9a8e6c99dc7dd82e78aadf9ea78d6614ed8bc1f18df8c1f89" id="navigate-link">正式なマップイメージ</a>
+    </div>
+
+    <!-- ポップアップウィンドウ -->
+    <div id="popup" class="popup">
+        <span id="popup-close" class="popup-close">&times;</span>
+        <h2 id="popup-title"></h2>
+        <p id="popup-description"></p>
+        <img id="popup-image" src="images/sample1.jpg" alt="ブースの商品画像">
+        <a id="popup-link" href="https://www.sksoap.co.jp/" target="_blank">詳細を見る</a>
+    </div>
+
+    <script src="pages/index.js"></script>
 </body>
 </html>
